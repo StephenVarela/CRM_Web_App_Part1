@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <%@contacts.each do |contact| -%>
-      <h2><%=contact.full_name%></h2>
-      <h3><%=contact.email%></h3>
-      <p><%=contact.note%></p>
-    <%end-%>
-  </body>
-</html>
+<div class="db-details">
+  <h2>There are <%=@contacts.size%> contacts</h2>
+</div>
+
+<%@contacts.each do |contact| -%>
+  <div class="contact">
+  <h2><%="#{contact.first_name} #{contact.last_name}"%></h2>
+  <h2>(<%=contact.email%>)</h2>
+  <div class="alter_contact">
+    <a href="#">Edit</a>  |
+    <a href="#">Delete</a>
+  </div>
+  <p><%=contact.note%></p>
+  </div>
+<%end-%>
