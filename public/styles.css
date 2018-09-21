@@ -52,6 +52,14 @@ main{
   padding-bottom: 10px;
 }
 
+.contact-details{
+  background-color: green;
+  color: white;
+}
+
+.contact-details p{
+  font-size: 20px;
+}
 
 footer {
   color: white;
