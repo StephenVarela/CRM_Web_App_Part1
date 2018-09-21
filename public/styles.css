@@ -1,7 +1,7 @@
 
 h1 {
   color: white;
-  background-color: black;
+  background-color: #38393a;
   padding: 10px;
   margin: 0;
   text-align: center;
@@ -16,11 +16,16 @@ ul {
 nav li{
   display: block;
   text-align: center;
-  background-color: silver;
+  background-color: #d6d9db;
   list-style-type: none;
   margin-top: 0;
   margin-bottom: 1px;
   font-size: 30px;
+}
+
+nav a{
+  text-decoration: none;
+  color: white;
 }
 
 main{
@@ -28,7 +33,7 @@ main{
 }
 
 .contact{
-  background-color: cyan;
+  background-color: #5bccbb;
   margin-top: 10px;
   padding: 5px;
 }
