@@ -10,6 +10,18 @@ get '/contacts' do
   erb :contacts
 end
 
+
+post '/contacts' do
+  my_contact = Contact.create(
+    first_name: params[:first_name],
+    last_name: params[:last_name],
+    email: params[:email],
+    note: params[:note]
+  )
+
+  redirect to('/contacts')
+end
+
 get '/about' do
   erb :about
 end
