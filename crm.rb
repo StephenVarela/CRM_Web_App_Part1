@@ -14,7 +14,9 @@ get '/about' do
   erb :about
 end
 
-get '/contacts/:id' do
+
+
+get '/contact/:id' do
   # instructions for how to handle requests to this route will go here
 
   if Contact.exists?(:id => params[:id].to_i)
@@ -28,6 +30,11 @@ get '/contacts/:id' do
   end
 
 end
+
+get '/contacts/new' do
+  erb :new
+end
+
 
 after do
   ActiveRecord::Base.connection.close
