@@ -5,3 +5,7 @@
 <h3><%="Email: #{@contact.email}"%></h3>
 <p><%="Notes: #{@contact.note}"%></p>
 </div>
+<form class="delete-contact" action="/contact/<%=@contact.id%>" method="post">
+  <input type='hidden' name='_method' value='delete'>
+  <input type='submit' value='Delete Contact'>
+</form>

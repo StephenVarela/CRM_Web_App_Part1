@@ -56,7 +56,36 @@ get '/contact/:id/edit' do
 end
 
 put '/contact/:id' do
-  "Updating Contact!"
+
+  if Contact.exists?(:id => params[:id].to_i)
+    @contact = Contact.find(params[:id].to_i)
+  end
+
+  if @contact
+    @contact.update(
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      email: params[:email],
+      note: params[:note]
+    )
+    redirect to('/contacts')
+  else
+    raise Sinatra::NotFound
+  end
+end
+
+delete '/contact/:id' do
+
+  if Contact.exists?(:id => params[:id].to_i)
+    @contact = Contact.find(params[:id].to_i)
+  end
+
+  if @contact
+    @contact.delete
+    redirect to('/contacts')
+  else
+    raise Sinatra::NotFound
+  end
 end
 
 
