@@ -26,9 +26,12 @@ get '/about' do
   erb :about
 end
 
+get '/contacts/new' do
+  erb :new
+end
 
 
-get '/contact/:id' do
+get '/contacts/:id' do
   # instructions for how to handle requests to this route will go here
 
   if Contact.exists?(:id => params[:id].to_i)
@@ -42,20 +45,33 @@ get '/contact/:id' do
   end
 end
 
-get '/contact/:id/edit' do
-  # instructions for how to handle requests to this route will go here
-  if Contact.exists?(:id => params[:id].to_i)
-    @contact = Contact.find(params[:id].to_i)
+get '/contacts/search/' do
+  #search all contacts for object by key value provided
+  p params
+  @temp_contacts = Contact.all
+  @contacts = []
+  @temp_contacts.each do |contact|
+    if (contact.first_name == params[:first_name])||(contact.last_name == params[:last_name])
+      @contacts << contact
+    end
   end
 
-  if @contact
-    erb :edit_contact
+  if @contacts.size == 1
+    @contact = @contacts[0]
+    erb :show_contact
+  elsif @contacts.size > 1
+    erb :contacts
   else
     raise Sinatra::NotFound
   end
+
+  #if contacts.size > 1 render contacts.erb with list of found items
+  #if contacts.size == 1 render show contact
+
 end
 
-put '/contact/:id' do
+
+put '/contacts/:id' do
 
   if Contact.exists?(:id => params[:id].to_i)
     @contact = Contact.find(params[:id].to_i)
@@ -74,7 +90,8 @@ put '/contact/:id' do
   end
 end
 
-delete '/contact/:id' do
+
+delete '/contacts/:id' do
 
   if Contact.exists?(:id => params[:id].to_i)
     @contact = Contact.find(params[:id].to_i)
@@ -88,9 +105,17 @@ delete '/contact/:id' do
   end
 end
 
+get '/contacts/:id/edit' do
+  # instructions for how to handle requests to this route will go here
+  if Contact.exists?(:id => params[:id].to_i)
+    @contact = Contact.find(params[:id].to_i)
+  end
 
-get '/contacts/new' do
-  erb :new
+  if @contact
+    erb :edit_contact
+  else
+    raise Sinatra::NotFound
+  end
 end
 
 

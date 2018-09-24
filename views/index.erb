@@ -1,1 +1,17 @@
 <h2>Welcome to my CRM</h2>
+<h2>Search by First or Last Name</h2>
+<form action="/contacts/search/" method="get">
+  <div>
+    <label> First Name:
+      <input type="text" name="first_name" value="">
+    </label>
+  </div>
+
+  <div>
+    <label> Last Name:
+      <input type="text" name="last_name" value="">
+    </label>
+  </div>
+
+  <input type="submit" value="search">
+</form>
