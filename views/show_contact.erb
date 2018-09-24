@@ -5,6 +5,10 @@
 <h3><%="Email: #{@contact.email}"%></h3>
 <p><%="Notes: #{@contact.note}"%></p>
 </div>
+<div class="alter_contact">
+  <a href="/contact/<%=@contact.id%>/edit">Edit</a>  |
+  <a href="/contacts">All</a>
+</div>
 <form class="delete-contact" action="/contact/<%=@contact.id%>" method="post">
   <input type='hidden' name='_method' value='delete'>
   <input type='submit' value='Delete Contact'>

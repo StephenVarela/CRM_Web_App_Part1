@@ -52,6 +52,14 @@ main{
   padding-bottom: 10px;
 }
 
+.create-contact{
+  display: block;
+}
+
+.edit-contact{
+  display: block;
+}
+
 footer {
   color: white;
   background-color: black;
