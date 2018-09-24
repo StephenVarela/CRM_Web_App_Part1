@@ -40,8 +40,25 @@ get '/contact/:id' do
   else
     raise Sinatra::NotFound
   end
-
 end
+
+get '/contact/:id/edit' do
+  # instructions for how to handle requests to this route will go here
+  if Contact.exists?(:id => params[:id].to_i)
+    @contact = Contact.find(params[:id].to_i)
+  end
+
+  if @contact
+    erb :edit_contact
+  else
+    raise Sinatra::NotFound
+  end
+end
+
+put '/contact/:id' do
+  "Updating Contact!"
+end
+
 
 get '/contacts/new' do
   erb :new
