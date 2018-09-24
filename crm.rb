@@ -62,7 +62,8 @@ get '/contacts/search/' do
   elsif @contacts.size > 1
     erb :contacts
   else
-    raise Sinatra::NotFound
+    halt(404, "<h2>Could Not Find Entry</h2><a href="'/'">Go Back</a>")
+    redirect back
   end
 
   #if contacts.size > 1 render contacts.erb with list of found items
